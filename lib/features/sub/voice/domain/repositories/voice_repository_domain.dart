@@ -1,0 +1,8 @@
+import 'package:multiple_result/multiple_result.dart';
+import 'package:voice_ai/core/errors/failure.dart';
+import 'package:voice_ai/features/sub/voice/domain/entities/voice_entity.dart';
+
+abstract class VoiceRepositoryDomain {
+  Future<Result<VoiceEntity, Failure>> startVoice();
+  Future<Result<VoiceEntity, Failure>> stopVoice();
+}
