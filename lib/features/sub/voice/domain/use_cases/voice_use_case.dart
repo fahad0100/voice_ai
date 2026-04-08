@@ -10,7 +10,7 @@ class VoiceUseCase {
 
   VoiceUseCase(this._repositoryData);
 
-  Future<Result<VoiceEntity, Failure>> startVoice() async {
+  Future<Result<bool, Failure>> startVoice() async {
     return _repositoryData.startVoice();
   }
 

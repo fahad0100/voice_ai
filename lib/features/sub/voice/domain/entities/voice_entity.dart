@@ -1,16 +1,10 @@
 import 'package:equatable/equatable.dart';
 
 class VoiceEntity extends Equatable {
-  final int id;
-  final String firstName;
-  final String lastName;
+  final String path;
 
-  const VoiceEntity({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
-  });
+  const VoiceEntity({required this.path});
 
   @override
-  List<Object?> get props => [firstName, lastName, id];
+  List<Object?> get props => [path];
 }

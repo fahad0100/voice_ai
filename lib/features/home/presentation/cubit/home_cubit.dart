@@ -14,9 +14,13 @@ class HomeCubit extends Cubit<HomeState> {
         //here is when success result
       },
       (whenError) {
-       //here is when error result
+        //here is when error result
       },
     );
+  }
+
+  void updatePath({required String path}) {
+    emit(HomeSuccessState(path: path));
   }
 
   @override

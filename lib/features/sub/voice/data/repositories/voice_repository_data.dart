@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:injectable/injectable.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:voice_ai/core/errors/network_exceptions.dart';
@@ -15,10 +17,10 @@ class VoiceRepositoryData implements VoiceRepositoryDomain {
   VoiceRepositoryData(this.remoteDataSource);
 
   @override
-  Future<Result<VoiceEntity, Failure>> startVoice() async {
+  Future<Result<bool, Failure>> startVoice() async {
     try {
-      final response = await remoteDataSource.startVoice();
-      return Success(response.toEntity());
+      await remoteDataSource.startVoice();
+      return Success(true);
     } catch (error) {
       return Error(FailureExceptions.getException(error));
     }

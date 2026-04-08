@@ -4,7 +4,7 @@ import 'package:voice_ai/features/sub/voice/data/models/voice_model.dart';
 import 'package:voice_ai/core/errors/network_exceptions.dart';
 
 abstract class BaseVoiceRemoteDataSource {
-  Future<VoiceModel> startVoice();
+  Future<bool> startVoice();
   Future<VoiceModel> stopVoice();
 }
 
@@ -17,10 +17,10 @@ class VoiceRemoteDataSource implements BaseVoiceRemoteDataSource {
   VoiceRemoteDataSource(this._voiceService);
 
   @override
-  Future<VoiceModel> startVoice() async {
+  Future<bool> startVoice() async {
     try {
       await _voiceService.startRecord();
-      return VoiceModel(id: 1, firstName: "Last Name", lastName: "First Name");
+      return true;
     } catch (error) {
       throw FailureExceptions.getException(error);
     }
@@ -30,9 +30,8 @@ class VoiceRemoteDataSource implements BaseVoiceRemoteDataSource {
   Future<VoiceModel> stopVoice() async {
     try {
       final voice = await _voiceService.stopRecord();
-      print(voice);
 
-      return VoiceModel(id: 1, firstName: "Last Name", lastName: "First Name");
+      return VoiceModel(path: voice!);
     } catch (error) {
       throw FailureExceptions.getException(error);
     }

@@ -8,7 +8,14 @@ abstract class HomeState extends Equatable {
 }
 
 class HomeInitialState extends HomeState {}
-class HomeSuccessState extends HomeState {}
+
+class HomeSuccessState extends HomeState {
+  final String? path;
+
+  const HomeSuccessState({this.path});
+  @override
+  List<Object?> get props => [path];
+}
 
 class HomeErrorState extends HomeState {
   final String message;
@@ -16,4 +23,3 @@ class HomeErrorState extends HomeState {
   @override
   List<Object?> get props => [message];
 }
-

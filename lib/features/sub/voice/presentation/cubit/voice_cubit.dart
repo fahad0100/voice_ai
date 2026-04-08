@@ -23,7 +23,7 @@ class VoiceCubit extends Cubit<VoiceState> {
     final result = await _voiceUseCase.stopVoice();
     result.when(
       (success) {
-        emit(VoiceRecordingState(start: false));
+        emit(VoiceRecordingState(start: false, path: success.path));
       },
       (whenError) {
         emit(VoiceErrorState(message: whenError.message));
