@@ -36,9 +36,9 @@ class VoiceFeatureWidget extends StatelessWidget {
 
             child: BlocBuilder<VoiceCubit, VoiceState>(
               builder: (context, state) {
-                if (state is VoiceRecordingState && state.path != null) {
+                if (state is VoiceRecordingState && state.text != null) {
                   if (getPath != null) {
-                    getPath!(state.path!);
+                    getPath!(state.text!);
                   }
                 }
                 return ValueListenableBuilder(

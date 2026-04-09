@@ -10,13 +10,13 @@ abstract class VoiceState extends Equatable {
 class VoiceInitialState extends VoiceState {}
 
 class VoiceRecordingState extends VoiceState {
-  final String? path;
+  final String? text;
   final bool start;
 
-  const VoiceRecordingState({required this.start, this.path});
+  const VoiceRecordingState({required this.start, this.text});
 
   @override
-  List<Object?> get props => [start, path];
+  List<Object?> get props => [start, text];
 }
 
 class VoiceSuccessState extends VoiceState {}
