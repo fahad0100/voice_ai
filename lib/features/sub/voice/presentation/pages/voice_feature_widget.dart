@@ -7,10 +7,12 @@ import 'package:voice_ai/features/sub/voice/presentation/cubit/voice_cubit.dart'
 import 'package:voice_ai/features/sub/voice/presentation/cubit/voice_state.dart';
 
 class VoiceFeatureWidget extends StatelessWidget {
-  const VoiceFeatureWidget({super.key, this.getPath});
+  const VoiceFeatureWidget({super.key, this.getPath, this.notifyStart});
   final Function(String)? getPath;
+  final Function(bool)? notifyStart;
   @override
   Widget build(BuildContext context) {
+    ValueNotifier isStartRecord = ValueNotifier<bool>(false);
     return BlocProvider(
       create: (context) => VoiceCubit(GetIt.I.get()),
       child: Builder(
@@ -18,9 +20,17 @@ class VoiceFeatureWidget extends StatelessWidget {
           final cubit = context.read<VoiceCubit>();
           return GestureDetector(
             onLongPress: () async {
+              isStartRecord.value = true;
+              if (notifyStart != null) {
+                notifyStart!(true);
+              }
               await cubit.startVoiceMethod();
             },
             onLongPressUp: () async {
+              isStartRecord.value = false;
+              if (notifyStart != null) {
+                notifyStart!(false);
+              }
               await cubit.stopVoiceMethod();
             },
 
@@ -31,18 +41,23 @@ class VoiceFeatureWidget extends StatelessWidget {
                     getPath!(state.path!);
                   }
                 }
-                return Container(
-                  height: 10.sizeSW(min: 100, max: 200),
-                  width: 10.sizeSW(min: 100, max: 200),
-                  decoration: BoxDecoration(
-                    color: state is VoiceRecordingState
-                        ? state.start
-                              ? AppColors.success
-                              : AppColors.textSecondary
-                        : AppColors.textSecondary,
-                    shape: .circle,
-                  ),
-                  child: Icon(Icons.mic, color: Colors.white),
+                return ValueListenableBuilder(
+                  valueListenable: isStartRecord,
+                  builder: (context, value, child) {
+                    return Container(
+                      height: 10.sizeSW(min: 100, max: 200),
+                      width: 10.sizeSW(min: 100, max: 200),
+                      decoration: BoxDecoration(
+                        color: state is VoiceRecordingState
+                            ? isStartRecord.value
+                                  ? AppColors.success
+                                  : AppColors.textSecondary
+                            : AppColors.textSecondary,
+                        shape: .circle,
+                      ),
+                      child: Icon(Icons.mic, color: Colors.white),
+                    );
+                  },
                 );
               },
             ),

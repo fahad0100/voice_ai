@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$VoiceModel {
 
- String get path;
+ String get text;
 /// Create a copy of VoiceModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $VoiceModelCopyWith<VoiceModel> get copyWith => _$VoiceModelCopyWithImpl<VoiceMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VoiceModel&&(identical(other.path, path) || other.path == path));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VoiceModel&&(identical(other.text, text) || other.text == text));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,path);
+int get hashCode => Object.hash(runtimeType,text);
 
 @override
 String toString() {
-  return 'VoiceModel(path: $path)';
+  return 'VoiceModel(text: $text)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $VoiceModelCopyWith<$Res>  {
   factory $VoiceModelCopyWith(VoiceModel value, $Res Function(VoiceModel) _then) = _$VoiceModelCopyWithImpl;
 @useResult
 $Res call({
- String path
+ String text
 });
 
 
@@ -65,9 +65,9 @@ class _$VoiceModelCopyWithImpl<$Res>
 
 /// Create a copy of VoiceModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? path = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? text = null,}) {
   return _then(_self.copyWith(
-path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
+text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -153,10 +153,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String path)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _VoiceModel() when $default != null:
-return $default(_that.path);case _:
+return $default(_that.text);case _:
   return orElse();
 
 }
@@ -174,10 +174,10 @@ return $default(_that.path);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String path)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text)  $default,) {final _that = this;
 switch (_that) {
 case _VoiceModel():
-return $default(_that.path);case _:
+return $default(_that.text);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +194,10 @@ return $default(_that.path);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String path)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text)?  $default,) {final _that = this;
 switch (_that) {
 case _VoiceModel() when $default != null:
-return $default(_that.path);case _:
+return $default(_that.text);case _:
   return null;
 
 }
@@ -209,10 +209,10 @@ return $default(_that.path);case _:
 @JsonSerializable()
 
 class _VoiceModel implements VoiceModel {
-  const _VoiceModel({required this.path});
+  const _VoiceModel({required this.text});
   factory _VoiceModel.fromJson(Map<String, dynamic> json) => _$VoiceModelFromJson(json);
 
-@override final  String path;
+@override final  String text;
 
 /// Create a copy of VoiceModel
 /// with the given fields replaced by the non-null parameter values.
@@ -227,16 +227,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VoiceModel&&(identical(other.path, path) || other.path == path));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VoiceModel&&(identical(other.text, text) || other.text == text));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,path);
+int get hashCode => Object.hash(runtimeType,text);
 
 @override
 String toString() {
-  return 'VoiceModel(path: $path)';
+  return 'VoiceModel(text: $text)';
 }
 
 
@@ -247,7 +247,7 @@ abstract mixin class _$VoiceModelCopyWith<$Res> implements $VoiceModelCopyWith<$
   factory _$VoiceModelCopyWith(_VoiceModel value, $Res Function(_VoiceModel) _then) = __$VoiceModelCopyWithImpl;
 @override @useResult
 $Res call({
- String path
+ String text
 });
 
 
@@ -264,9 +264,9 @@ class __$VoiceModelCopyWithImpl<$Res>
 
 /// Create a copy of VoiceModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? path = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? text = null,}) {
   return _then(_VoiceModel(
-path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
+text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

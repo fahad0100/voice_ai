@@ -23,6 +23,12 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeSuccessState(path: path));
   }
 
+  void showLoading(bool endRecorded) {
+    if (!endRecorded) {
+      emit(HomeLoadingState());
+    }
+  }
+
   @override
   Future<void> close() {
     //here is when close cubit

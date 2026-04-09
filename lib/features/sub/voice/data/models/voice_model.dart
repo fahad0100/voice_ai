@@ -5,7 +5,7 @@ part 'voice_model.g.dart';
 
 @freezed
 abstract class VoiceModel with _$VoiceModel {
-  const factory VoiceModel({required String path}) = _VoiceModel;
+  const factory VoiceModel({required String text}) = _VoiceModel;
 
   factory VoiceModel.fromJson(Map<String, Object?> json) =>
       _$VoiceModelFromJson(json);
@@ -13,6 +13,6 @@ abstract class VoiceModel with _$VoiceModel {
 
 extension VoiceModelMapper on VoiceModel {
   VoiceEntity toEntity() {
-    return VoiceEntity(path: path);
+    return VoiceEntity(text: text);
   }
 }

@@ -8,6 +8,7 @@ import 'failure.dart';
 
 class FailureExceptions {
   static Failure getException(Object error) {
+    print(error);
     return switch (error) {
       DioException e => _handleDio(e),
       AuthException e => _handleAuth(e),
@@ -25,6 +26,7 @@ class FailureExceptions {
   // ══════════════════════════════════════════════════════════════
 
   static Failure _handleDio(DioException error) {
+    print(error.response!.data);
     return switch (error.type) {
       DioExceptionType.connectionTimeout => const TimeoutFailure(
         'Connection timeout',
@@ -405,5 +407,3 @@ class FailureExceptions {
     return const NetworkFailure();
   }
 }
-
-

@@ -7,7 +7,7 @@ part of 'voice_model.dart';
 // **************************************************************************
 
 _VoiceModel _$VoiceModelFromJson(Map<String, dynamic> json) =>
-    _VoiceModel(path: json['path'] as String);
+    _VoiceModel(text: json['text'] as String);
 
 Map<String, dynamic> _$VoiceModelToJson(_VoiceModel instance) =>
-    <String, dynamic>{'path': instance.path};
+    <String, dynamic>{'text': instance.text};
