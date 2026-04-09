@@ -19,7 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  void updatePath({required String path}) {
+  void updatePath({String? path}) {
     emit(HomeSuccessState(path: path));
   }
 

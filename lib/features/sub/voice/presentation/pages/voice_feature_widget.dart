@@ -7,8 +7,8 @@ import 'package:voice_ai/features/sub/voice/presentation/cubit/voice_cubit.dart'
 import 'package:voice_ai/features/sub/voice/presentation/cubit/voice_state.dart';
 
 class VoiceFeatureWidget extends StatelessWidget {
-  const VoiceFeatureWidget({super.key, required this.getPath});
-  final Function(String) getPath;
+  const VoiceFeatureWidget({super.key, this.getPath});
+  final Function(String)? getPath;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -27,7 +27,9 @@ class VoiceFeatureWidget extends StatelessWidget {
             child: BlocBuilder<VoiceCubit, VoiceState>(
               builder: (context, state) {
                 if (state is VoiceRecordingState && state.path != null) {
-                  getPath(state.path!);
+                  if (getPath != null) {
+                    getPath!(state.path!);
+                  }
                 }
                 return Container(
                   height: 10.sizeSW(min: 100, max: 200),
